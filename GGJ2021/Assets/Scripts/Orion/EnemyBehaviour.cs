@@ -25,6 +25,11 @@ public class EnemyBehaviour : MonoBehaviour
             dir *= -1;
             transform.position -= new Vector3(0.01f * xSpeed, 0, 0);
         }
+
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<PlayerBehaviour>().Die();
+        }
     }
 
     public void Die()

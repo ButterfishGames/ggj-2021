@@ -92,4 +92,9 @@ public class PlayerBehaviour : MonoBehaviour
             overheatText.enabled = true;
         }
     }
+
+    public void Die()
+    {
+        Destroy(gameObject); // TEMPORARY
+    }
 }
