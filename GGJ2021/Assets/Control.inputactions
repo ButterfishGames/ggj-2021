@@ -14,6 +14,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "136e3503-c5bc-4ef6-8fd3-9781f5de4ffe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
                     "name": "Release",
                     "type": "Button",
                     "id": "8dc4d55c-acbe-4375-b94c-dd40b16fb3ab",
@@ -27,7 +35,7 @@
                     "id": "e5ebb28a-2d4f-438b-95e2-97766f99434e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold"
+                    "interactions": "Hold(duration=0.2)"
                 }
             ],
             "bindings": [
@@ -226,6 +234,72 @@
                     "processors": "",
                     "groups": "Mouse",
                     "action": "Release",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f91962a6-dec2-4117-9ed3-eb92cc1b81fa",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20a54b71-c5ad-429c-865a-6fefadefdd80",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c81447f0-0f50-453e-97df-279cdbbffb25",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f20f3f8-4de8-4900-a0ea-a82402beb9d6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fccb7e0-f3e5-4582-9aba-20eb2c8b3335",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7fa0815b-8f3a-4787-8b2c-bba8a58c2df1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
