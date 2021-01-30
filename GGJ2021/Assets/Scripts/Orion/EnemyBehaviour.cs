@@ -7,7 +7,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float xSpeed;
     public float ySpeed;
 
-    [Range(1,5)]
+    [Range(0,2)]
     public float deathAccel;
 
     private int dir = 1;
@@ -21,20 +21,35 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("EnemyBound"))
         {
-            dir *= -1;
+            if (transform.position.y+50 > 0)
+            {
+                dir = -1;
+            }
+            else
+            {
+                dir = 1;
+            }
             transform.position -= new Vector3(0.01f * xSpeed, 0, 0);
         }
 
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerBehaviour>().Die();
+            collision.GetComponent<OrionPlayerBehaviour>().Die();
         }
     }
 
     public void Die()
     {
         EnemyBehaviour wave = transform.parent.GetComponent<EnemyBehaviour>();
-        wave.ySpeed *= wave.deathAccel;
-        Destroy(gameObject);
+        if (wave.transform.childCount > 1)
+        {
+            wave.ySpeed += wave.deathAccel;
+            Destroy(gameObject);
+        }
+        else
+        {
+            OrionController.singleton.NextWave();
+            Destroy(wave.gameObject);
+        }
     }
 }
