@@ -691,8 +691,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0.2, a: 1}
+  m_Sprite: {fileID: 21300000, guid: be9f3abb7e768664cb54b3b408dccff8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -711,7 +711,7 @@ Transform:
   m_GameObject: {fileID: 928437179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -50, z: 1}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1049,6 +1049,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6231831060773194925, guid: c86ca73411c0fba43863db09fcbee6d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6231831060773194927, guid: c86ca73411c0fba43863db09fcbee6d1,
         type: 3}
       propertyPath: m_RootOrder
@@ -1057,12 +1062,12 @@ PrefabInstance:
     - target: {fileID: 6231831060773194927, guid: c86ca73411c0fba43863db09fcbee6d1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.86
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6231831060773194927, guid: c86ca73411c0fba43863db09fcbee6d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50
+      value: -49.9
       objectReference: {fileID: 0}
     - target: {fileID: 6231831060773194927, guid: c86ca73411c0fba43863db09fcbee6d1,
         type: 3}
@@ -1102,6 +1107,11 @@ PrefabInstance:
     - target: {fileID: 6231831060773194927, guid: c86ca73411c0fba43863db09fcbee6d1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6231831061196489347, guid: c86ca73411c0fba43863db09fcbee6d1,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
