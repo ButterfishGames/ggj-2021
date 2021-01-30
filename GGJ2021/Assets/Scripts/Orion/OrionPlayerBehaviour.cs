@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerBehaviour : MonoBehaviour
+public class OrionPlayerBehaviour : MonoBehaviour
 {
     [Tooltip("Set to 0 to have no cooldown")]
     public float cooldownTime;
@@ -29,6 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnButton(InputValue value)
     {
+        Debug.Log("test");
         if (!overheated)
         {
             if (currTimer <= 0)
