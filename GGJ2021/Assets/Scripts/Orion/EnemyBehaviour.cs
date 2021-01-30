@@ -19,7 +19,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("detected");
         if (collision.CompareTag("EnemyBound"))
         {
             dir *= -1;

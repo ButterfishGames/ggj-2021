@@ -29,7 +29,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnButton(InputValue value)
     {
-        Debug.Log("test");
         if (!overheated)
         {
             if (currTimer <= 0)
