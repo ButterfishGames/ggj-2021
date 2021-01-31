@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.2)"
+                },
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "a8c13678-4d40-447c-8053-b423d9153130",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.2)"
                 }
             ],
             "bindings": [
@@ -300,6 +308,17 @@
                     "processors": "",
                     "groups": "Mouse",
                     "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1fbdf6c-c6db-4621-8823-cc81b08048d8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

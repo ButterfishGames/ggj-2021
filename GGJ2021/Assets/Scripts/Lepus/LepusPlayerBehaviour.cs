@@ -20,6 +20,11 @@ public class LepusPlayerBehaviour : MonoBehaviour
         Jump();
     }
 
+    private void OnQuit(InputValue value)
+    {
+        Application.Quit();
+    }
+
     private void Start()
     {
         canJump = true;
@@ -31,7 +36,10 @@ public class LepusPlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        currTime++;
+        if (canJump)
+        {
+            currTime++;
+        }
         if (currTime >= dirChangeTime)
         {
             ChangeDir();
