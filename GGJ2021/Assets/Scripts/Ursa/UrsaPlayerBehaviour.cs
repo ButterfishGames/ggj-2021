@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class UrsaPlayerBehaviour : MonoBehaviour
 {
     public float smallJumpForce;
     public float bigJumpForce;
 
+    public TextMeshProUGUI tutText;
+    public Animator anim;
+
     private bool canJump;
 
     private Rigidbody2D rb;
+    private PlayerInput pIn;
 
     private void OnTap(InputValue value)
     {
@@ -29,12 +34,18 @@ public class UrsaPlayerBehaviour : MonoBehaviour
 
     void Start()
     {
+        pIn = GetComponent<PlayerInput>();
         canJump = true;
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Jump(bool isBig)
     {
+        if (tutText.enabled)
+        {
+            tutText.enabled = false;
+        }
+
         if (!canJump)
         {
             return;
@@ -42,6 +53,7 @@ public class UrsaPlayerBehaviour : MonoBehaviour
 
         float jumpForce = isBig ? bigJumpForce : smallJumpForce;
         rb.AddForce(Vector2.up * jumpForce);
+        anim.SetBool("jumping", true);
         canJump = false;
     }
 
@@ -49,6 +61,7 @@ public class UrsaPlayerBehaviour : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground") && CheckForGround())
         {
+            anim.SetBool("jumping", false);
             canJump = true;
         }
     }
@@ -58,6 +71,16 @@ public class UrsaPlayerBehaviour : MonoBehaviour
         if (!CheckForGround())
         {
             canJump = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bound"))
+        {
+            Time.timeScale = 0;
+            pIn.enabled = false;
+            GameController.singleton.Continue();
         }
     }
 

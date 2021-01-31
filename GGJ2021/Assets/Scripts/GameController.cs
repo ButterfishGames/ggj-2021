@@ -7,7 +7,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    private readonly int[] GAME_IND_ARR = { 4, 5, 6, 7, 8 };
+    private readonly int[] GAME_IND_ARR = { 4, 5, 6, 8 }; //7, 8 };
     private readonly int[] GAME_COST_ARR = { 1, 2, 4 };
     private readonly float[] SCREAM_TIME_ARR = { 0.2f, 1 };
 
@@ -50,12 +50,12 @@ public class GameController : MonoBehaviour
         }
 
         games = new int[3];
-        games[0] = 5; //GAME_IND_ARR[Random.Range(0, 4)];
+        games[0] = GAME_IND_ARR[Random.Range(0, 3)]; // 4)];
         do
         {
-            games[1] = GAME_IND_ARR[Random.Range(0, 4)];
+            games[1] = GAME_IND_ARR[Random.Range(0, 3)]; //4)];
         } while (games[1] == games[0]);
-        games[2] = GAME_IND_ARR[4];
+        games[2] = GAME_IND_ARR[3];
 
         currCost = 1;
         currGame = 0;

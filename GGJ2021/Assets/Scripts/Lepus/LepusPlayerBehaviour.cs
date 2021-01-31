@@ -8,6 +8,10 @@ public class LepusPlayerBehaviour : MonoBehaviour
     public int dirChangeTime;
     public float jumpForce;
 
+    public SpriteRenderer sr;
+
+    public Sprite idle, jump, fall;
+
     private bool canJump;
     private int dir;
     private int dirDir;
@@ -36,6 +40,28 @@ public class LepusPlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (rb.velocity.y > 0)
+        {
+            sr.sprite = jump;
+        }
+        else if (rb.velocity.y < 0)
+        {
+            sr.sprite = fall;
+        }
+        else
+        {
+            sr.sprite = idle;
+        }
+
+        if (rb.velocity.x > 0)
+        {
+            transform.rotation = Quaternion.identity; 
+        }
+        else if (rb.velocity.x < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
         if (canJump)
         {
             currTime++;
