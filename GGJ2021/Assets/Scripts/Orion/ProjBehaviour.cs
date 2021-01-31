@@ -22,5 +22,17 @@ public class ProjBehaviour : MonoBehaviour
             collision.GetComponent<EnemyBehaviour>().Die();
             Destroy(gameObject);
         }
+        
+        if (collision.CompareTag("BossProj"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("Boss"))
+        {
+            collision.GetComponent<BossBehaviour>().Damage();
+            Destroy(gameObject);
+        }
     }
 }

@@ -25,13 +25,11 @@ public class CollectibleBehaviour : MonoBehaviour
                 {
                     follow.turnPoints.Add(prevFollow.turnPoints[i]);
                 }
-                follow.canKill = true;
             }
             else
             {
                 follow.SetDir(player.GetDir());
                 follow.turnPoints = new List<Vector3>();
-                follow.canKill = false;
             }
             
             player.samples.Add(gameObject);
@@ -55,6 +53,7 @@ public class CollectibleBehaviour : MonoBehaviour
                     break;
             }
 
+            follow.canKill = hasFollows;
             player.CheckForWin();
             Destroy(this);
         }

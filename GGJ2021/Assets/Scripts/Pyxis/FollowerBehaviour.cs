@@ -8,9 +8,16 @@ public class FollowerBehaviour : MonoBehaviour
 
     public List<Vector3> turnPoints;
 
+    private bool horsesHeld;
     private int dir;
 
     private PyxisPlayerBehaviour player;
+
+    private void Start()
+    {
+        horsesHeld = false;
+        StartCoroutine(HoldYourHorses());
+    }
 
     private void FixedUpdate()
     {
@@ -64,6 +71,14 @@ public class FollowerBehaviour : MonoBehaviour
             && pos.z > comp.z - 0.005f && pos.z < comp.z + 0.005f;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (canKill && horsesHeld && collision.CompareTag("Player"))
+        {
+            player.Die();
+        }
+    }
+
     public int GetDir()
     {
         return dir;
@@ -77,5 +92,11 @@ public class FollowerBehaviour : MonoBehaviour
     public void SetPlayer(PyxisPlayerBehaviour p)
     {
         player = p;
+    }
+
+    private IEnumerator HoldYourHorses()
+    {
+        yield return new WaitForEndOfFrame();
+        horsesHeld = true;
     }
 }

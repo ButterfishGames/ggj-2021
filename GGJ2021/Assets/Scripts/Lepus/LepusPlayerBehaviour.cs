@@ -36,7 +36,10 @@ public class LepusPlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        currTime++;
+        if (canJump)
+        {
+            currTime++;
+        }
         if (currTime >= dirChangeTime)
         {
             ChangeDir();

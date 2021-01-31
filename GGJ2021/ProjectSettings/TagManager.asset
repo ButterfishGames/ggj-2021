@@ -8,6 +8,9 @@ TagManager:
   - EnemyBound
   - Ground
   - Obstacle
+  - Boss
+  - BossProj
+  - Bound
   layers:
   - Default
   - TransparentFX

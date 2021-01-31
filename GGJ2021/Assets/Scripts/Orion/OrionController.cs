@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OrionController : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class OrionController : MonoBehaviour
     public float waveSpawnWait;
 
     public GameObject[] waves;
-    public Text waveText;
+    public TextMeshProUGUI waveText;
+    public TextMeshProUGUI tutText;
 
     private int currWave;
 
@@ -44,7 +46,6 @@ public class OrionController : MonoBehaviour
         }
         else
         {
-
             if (currWave == waves.Length)
             {
                 waveText.text = "FINAL WAVE";
@@ -59,6 +60,7 @@ public class OrionController : MonoBehaviour
 
             Instantiate(waves[currWave - 1], new Vector3(0, -50, 0), Quaternion.identity);
             waveText.enabled = false;
+            tutText.enabled = false;
         }
     }
 }
