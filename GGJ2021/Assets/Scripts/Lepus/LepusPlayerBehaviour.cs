@@ -20,6 +20,11 @@ public class LepusPlayerBehaviour : MonoBehaviour
         Jump();
     }
 
+    private void OnQuit(InputValue value)
+    {
+        Application.Quit();
+    }
+
     private void Start()
     {
         canJump = true;
