@@ -112,11 +112,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: joystix monospace SDF
+  m_Name: joystix monospace SDF Red
   m_EditorClassIdentifier: 
-  hashCode: 943826844
+  hashCode: 1238792783
   material: {fileID: -8660356664677450976}
-  materialHashCode: 924123324
+  materialHashCode: 1600060175
   m_Version: 1.1.0
   m_SourceFontFileGUID: 3cb0ab60413040a429d70019eea65a1e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 3cb0ab60413040a429d70019eea65a1e,
@@ -850,10 +850,6 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 8230
     m_GlyphIndex: 421
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 104
-    m_GlyphIndex: 42
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 4560200362863976990}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class OrionPlayerBehaviour : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class OrionPlayerBehaviour : MonoBehaviour
     private float currHeat;
 
     private Slider heatGauge;
-    private Text overheatText;
+    private TextMeshProUGUI overheatText;
 
     private void OnButton(InputValue value)
     {
@@ -55,7 +56,7 @@ public class OrionPlayerBehaviour : MonoBehaviour
         currTimer = 0.0f;
 
         heatGauge = GameObject.Find("HeatGauge").GetComponent<Slider>();
-        overheatText = GameObject.Find("OverheatText").GetComponent<Text>();
+        overheatText = GameObject.Find("OverheatText").GetComponent<TextMeshProUGUI>();
     }
 
     private void FixedUpdate()
@@ -100,6 +101,7 @@ public class OrionPlayerBehaviour : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject); // TEMPORARY
+        Time.timeScale = 0;
+        GameController.singleton.Continue();
     }
 }

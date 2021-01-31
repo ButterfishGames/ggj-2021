@@ -8,9 +8,13 @@ public class PyxisPlayerBehaviour : MonoBehaviour
     public int moveSpeed;
 
     public GameObject samplePrefab;
+    public GameObject tutText;
     public List<GameObject> samples;
 
+    private bool started;
     private int dir;
+
+    private PlayerInput pIn;
 
     private void OnButton(InputValue value)
     {
@@ -23,14 +27,29 @@ public class PyxisPlayerBehaviour : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
+        started = false;
+        pIn = GetComponent<PlayerInput>();
         samples = new List<GameObject>();
         dir = 2;
-        SpawnNewSample();
+        StartCoroutine(StartRtn());
     }
     
+    private IEnumerator StartRtn()
+    {
+        yield return new WaitForSeconds(2);
+        tutText.SetActive(false);
+        SpawnNewSample();
+        started = true;
+    }
+
     private void FixedUpdate()
     {
+        if (!started)
+        {
+            return;
+        }
+
         Vector3 move;
         switch (dir)
         {
@@ -113,6 +132,21 @@ public class PyxisPlayerBehaviour : MonoBehaviour
     private void Win()
     {
         GameController.singleton.Win();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bound"))
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Time.timeScale = 0;
+        pIn.enabled = false;
+        GameController.singleton.Continue();
     }
 
     public int GetDir()

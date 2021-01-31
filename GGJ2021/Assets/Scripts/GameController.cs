@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
 
     private int[] games;
 
+    private GameObject continueScreen;
     private PlayerInput pIn;
 
     private void OnButton(InputValue value)
@@ -49,7 +50,7 @@ public class GameController : MonoBehaviour
         }
 
         games = new int[3];
-        games[0] = GAME_IND_ARR[Random.Range(0, 4)];
+        games[0] = 5; //GAME_IND_ARR[Random.Range(0, 4)];
         do
         {
             games[1] = GAME_IND_ARR[Random.Range(0, 4)];
@@ -70,9 +71,17 @@ public class GameController : MonoBehaviour
         {
             SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1).buildIndex);
             SceneManager.LoadScene(games[currGame], LoadSceneMode.Additive);
+            StartCoroutine(SwitchActiveScene());
             pIn.enabled = false;
             gameStarted = true;
         }
+    }
+
+    private IEnumerator SwitchActiveScene()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
     }
 
     private void InsertCoin()
@@ -90,10 +99,16 @@ public class GameController : MonoBehaviour
 
         if (currCost == 0)
         {
-            continuing = false;
+            if (continuing)
+            {
+                Time.timeScale = 1;
+                continuing = false;
+                continueScreen.SetActive(false);
+                gameStarted = false;
+            }
             StartGame();
         }
-        else if (!continuing)
+        else
         {
             GameObject.Find("PayText").GetComponent<TextMeshProUGUI>().text = "insert " + currCost + " tokens";
         }
@@ -102,6 +117,27 @@ public class GameController : MonoBehaviour
     public void Continue()
     {
         StartCoroutine(ContinueScreen());
+        continueScreen = FindContinueScreen();
+        continueScreen.SetActive(true);
+        currCost = GAME_COST_ARR[currGame];
+        GameObject.Find("PayText").GetComponent<TextMeshProUGUI>().text = "insert " + currCost + " tokens";
+        pIn.enabled = true;
+    }
+
+    private GameObject FindContinueScreen()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        RectTransform[] children = canvas.GetComponentsInChildren<RectTransform>(true);
+        for (int i = 0; i < children.Length; i++)
+        {
+            Debug.Log(children[i].gameObject.name);
+            if (children[i].gameObject.name.Equals("ContinueScreen"))
+            {
+                return children[i].gameObject;
+            }
+        }
+
+        return null;
     }
 
     private IEnumerator ContinueScreen()
@@ -110,8 +146,12 @@ public class GameController : MonoBehaviour
         int countdown = 9;
         while (countdown > 0 && continuing)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
             countdown--;
+            if (continuing)
+            {
+                GameObject.Find("CountText").GetComponent<TextMeshProUGUI>().text = "" + countdown;
+            }
         }
 
         if (continuing)
@@ -138,11 +178,16 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
 
         currCost = GAME_COST_ARR[currGame];
+
+        yield return new WaitForSeconds(0.05f);
         GameObject.Find("PayText").GetComponent<TextMeshProUGUI>().text = "insert " + currCost + " tokens";
+        pIn.enabled = true;
+        gameStarted = false;
     }
 
     public void Lose()
     {
-        // TODO: LOSE
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(1).buildIndex);
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 }
