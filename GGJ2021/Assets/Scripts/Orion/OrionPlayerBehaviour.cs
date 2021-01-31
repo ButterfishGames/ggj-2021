@@ -43,6 +43,11 @@ public class OrionPlayerBehaviour : MonoBehaviour
         }
     }
 
+    private void OnQuit(InputValue value)
+    {
+        Application.Quit();
+    }
+
     private void Start()
     {
         bufferedShot = false;

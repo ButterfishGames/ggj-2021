@@ -21,7 +21,12 @@ public class UrsaPlayerBehaviour : MonoBehaviour
     {
         Jump(true);
     }
-    
+
+    private void OnQuit(InputValue value)
+    {
+        Application.Quit();
+    }
+
     void Start()
     {
         canJump = true;

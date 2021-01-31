@@ -21,6 +21,11 @@ public class AltairPlayerBehaviour : MonoBehaviour
         goingUp = false;
     }
 
+    private void OnQuit(InputValue value)
+    {
+        Application.Quit();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
